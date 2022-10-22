@@ -1,5 +1,8 @@
 #!/bin/sh
 
+username="202221140000"
+password="passwd123456"
+
 curl -i -s -L 'https://u.njtech.edu.cn/cas/login?service=https%3A%2F%2Fu.njtech.edu.cn%2Foauth2%2Fauthorize%3Fclient_id%3DOe7wtp9CAMW0FVygUasZ%26response_type%3Dcode%26state%3Dnjtech%26s%3Df682b396da8eb53db80bb072f5745232' > NjtechHomeC1Html
 
 para[1]=`sed -n -r '1,20s/^.*?JSESSIONID=(.*?);.*?;.*?$/\1/gp' NjtechHomeC1Html`
@@ -19,7 +22,7 @@ done
 
 echo ${para[@]} $shasumCaptcha
 
-curl -s -XPOST "https://u.njtech.edu.cn/cas/login;jsessionid=${para[1]}?service=https%3A%2F%2Fu.njtech.edu.cn%2Foauth2%2Fauthorize%3Fclient_id%3DOe7wtp9CAMW0FVygUasZ%26response_type%3Dcode%26state%3Dnjtech%26s%3Df682b396da8eb53db80bb072f5745232" -H "Cookie: JSESSIONID=${para[1]}; insert_cookie=${para[2]}" -d "username=202221149009&password=QIUYE-Njtech&captcha=${para[5]}&channelshow=%E4%B8%AD%E5%9B%BD%E7%94%B5%E4%BF%A1&channel=%40telecom&lt=${para[3]}&execution=${para[4]}&_eventId=submit" \ --compressed  -L | grep -o 'window.location.href = "/oauth2/logout?retUrl=https://i.njtech.edu.cn";' > /dev/null
+curl -s -XPOST "https://u.njtech.edu.cn/cas/login;jsessionid=${para[1]}?service=https%3A%2F%2Fu.njtech.edu.cn%2Foauth2%2Fauthorize%3Fclient_id%3DOe7wtp9CAMW0FVygUasZ%26response_type%3Dcode%26state%3Dnjtech%26s%3Df682b396da8eb53db80bb072f5745232" -H "Cookie: JSESSIONID=${para[1]}; insert_cookie=${para[2]}" -d "username=${username}&password=${password}&captcha=${para[5]}&channelshow=%E4%B8%AD%E5%9B%BD%E7%94%B5%E4%BF%A1&channel=%40telecom&lt=${para[3]}&execution=${para[4]}&_eventId=submit" \ --compressed  -L | grep -o 'window.location.href = "/oauth2/logout?retUrl=https://i.njtech.edu.cn";' > /dev/null
 
 if [ $? -eq 0 ] ; then echo "Login Success." ; else echo "Login Fail. Retrying." ; bash login.bash ; fi
 
