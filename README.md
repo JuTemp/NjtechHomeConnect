@@ -8,7 +8,7 @@ $ cd $DIR
 $ bash login.bash
 ```
 
-If it work correctly, it will output like this
+If it works correctly, it will output like this
 
 ```
 F28D34EA658A1607295773FFC3D62146.TomcatB 67313298 LT-2084105-CAIhK5iXslhnkqzgD3qBrNStfp0BtM e1s1 6296 ea0335137fc3c281aaa639a970678571b4224e7e
