@@ -1,18 +1,19 @@
-这个项目结束于2023Feb16，基于bash平台。
+这个项目结束于2023Jun16，基于shell平台。
 
 你需要将这两个文件放在同一个目录，<br>
-修改login.bash文件前几行，输入账号和密码，选择中国电信或中国移动（只保留对应运营商并删除另一个），<br>
+修改login.sh文件前几行，输入账号和密码，选择中国电信或中国移动（只保留对应运营商并删除另一个），<br>
 然后执行以下命令：
 
 ```
 $ cd $DIR
-$ bash login.bash
+$ sudo chmod +x login.sh
+$ ./login.sh
 ```
 
 如果这个脚本成功执行，它将输出类似于以下结果：
 
 ```
-F28D34EA658A1607295773FFC3D62146.TomcatB 67313298 LT-2084105-CAIhK5iXslhnkqzgD3qBrNStfp0BtM e1s1 6296 ea0335137fc3c281aaa639a970678571b4224e7e
+32F08A6E7E93F6B63A33519AA349EFBB.TomcatB 67313298 LT-21537498-hxwl3jKW73t0Rg6HAcCEkZDXW0DJ2I e1s1 7242 9c84897ccefb11b09b74466df39fcdd498f8ca44
 Login Success.
 ```
 
@@ -29,7 +30,21 @@ Login Success.
 sed -i '3000,$d' RainbowNjtechHomeKeys
 ```
 
+如果出现类似```./login.sh: 26: sha1sum not found```错误，执行以下命令即可：
+```
+sed -i 's/sha1sum/md5sum/g' login.sh
+sed -i 's/RainbowNjtechHomeKeys.sha1/RainbowNjtechHomeKeys.md5/g' login.sh
+```
+如果没有出现上面的错误，就可以删去```RainbowNjtechHomeKeys.md5```文件，<br>
+出现了上面的错误，执行对应命令之后，可以删去```RainbowNjtechHomeKeys.sha1```文件。
+
+另外，你可以修改默认账号和密码，使用如下命令：
+
+```
+$ ./login.sh 0 202221149100 passwd123789
+```
+
 如果不能成功执行，请联系我。
 
-----JuTemp 2023Feb16
+----JuTemp 2023May31
 
