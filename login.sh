@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ "$2" ]; then username="$2"; else username="202221149008"; fi
-if [ "$3" ]; then password="$3"; else password="czj281023"; fi
+if [ "$2" ]; then username="$2"; else username="202221149000"; fi
+if [ "$3" ]; then password="$3"; else password="passwd123456"; fi
 max_retry=200
 max_try=3
 if [ "$1" ]; then this_try="$1"; else this_try=0; fi 
