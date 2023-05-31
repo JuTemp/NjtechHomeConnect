@@ -41,7 +41,7 @@ if [ $? -eq 0 ]
 else
   if [ ${this_try} -gt ${max_try} ]
     then echo "Max Try. Exit."
-    else echo "Login Fail. Retrying."; bash /home/jtp/ConnectNjtechHome/login.bash $(( $1 + 1 )) "$2" "$3"
+    else echo "Login Fail. Retrying."; /home/jtp/ConnectNjtechHome/login.bash $(( $1 + 1 )) "$2" "$3"
   fi
 fi
 
